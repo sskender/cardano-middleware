@@ -29,8 +29,9 @@ Run node with Docker - run in background or in tmux:
 
 ```bash
 docker run \
-    -v $PWD/environments/preprod:/configuration \
-    -v $PWD/cardano-data:/opt \
+    --name cardano-node \
+    --volume $PWD/environments/preprod:/configuration \
+    --volume $PWD/cardano-data:/opt \
     inputoutput/cardano-node run \
     --config /configuration/config.json \
     --topology /configuration/topology.json
