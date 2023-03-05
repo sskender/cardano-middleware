@@ -14,4 +14,7 @@ module.exports = {
   logger: {
     logLevel: process.env.LOG_LEVEL || 'info',
   },
+  cardano: {
+    network: process.env.CARDANO_NETWORK || 'mainnet',
+  },
 };
