@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
+const config = require('./config');
 const logger = require('./utils/logger');
 const router = require('./routes');
 
@@ -18,7 +19,6 @@ app.use('/api/v1/', router);
 app.use(require('./middleware/not-found'));
 app.use(require('./middleware/error'));
 
-app.listen(3000, () => {
-  const env = process.env.NODE_ENV || 'local';
-  logger.info(`App running in ${env} environment`);
+app.listen(config.port, () => {
+  logger.info(`App running in ${config.profile} environment`);
 });
