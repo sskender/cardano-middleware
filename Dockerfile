@@ -33,7 +33,7 @@ ENV NODE_ENV=production
 
 RUN npm ci --omit=dev
 
-COPY --chown=node:node . .
+COPY --chown=node:node src .
 
 EXPOSE 3000
 
