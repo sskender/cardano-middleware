@@ -15,6 +15,6 @@ module.exports = {
     logLevel: process.env.LOG_LEVEL || 'info',
   },
   cardano: {
-    network: process.env.CARDANO_NETWORK || 'mainnet',
+    network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
   },
 };
