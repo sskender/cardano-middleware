@@ -1,0 +1,25 @@
+{
+  "name": "cardano-nft-land-mines",
+  "version": "1.0.0",
+  "description": "Service for interaction with land mines NFTs on Cardano blockchain",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sven Skender",
+  "license": "ISC",
+  "dependencies": {
+    "cardanocli-js": "^4.1.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.4"
+  }
+}

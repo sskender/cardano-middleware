@@ -1,1 +1,1 @@
-# cardano-nft-mines
+# Land mines NFT on Cardano blockchain

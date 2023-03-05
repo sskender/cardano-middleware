@@ -1,0 +1,17 @@
+module.exports = {
+  env: {
+    node: true,
+    es6: true,
+  },
+  extends: ['eslint:recommended', 'prettier'],
+  plugins: ['prettier'],
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+  },
+  rules: {
+    'prettier/prettier': ['error'],
+    'no-console': 'error',
+    'no-unused-vars': 'warn',
+  },
+};
