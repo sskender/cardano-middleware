@@ -215,3 +215,7 @@ tags
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,vim,macos
+
+### Cardano ###
+priv
+tmp
