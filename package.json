@@ -8,7 +8,8 @@
     "dev": "nodemon src/index.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-wallet": "node src/scripts/create-wallet.js"
   },
   "author": "Sven Skender",
   "license": "ISC",
