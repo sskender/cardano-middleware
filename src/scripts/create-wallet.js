@@ -1,6 +1,7 @@
+const config = require('../config');
 const cardano = require('../utils/cardano');
 
-const createWallet = (account) => {
+function createWallet(account) {
   const payment = cardano.addressKeyGen(account);
   const stake = cardano.stakeAddressKeyGen(account);
   cardano.stakeAddressBuild(account);
@@ -9,6 +10,7 @@ const createWallet = (account) => {
     stakeVkey: stake.vkey,
   });
   return cardano.wallet(account);
-};
+}
 
-createWallet('WalletLandMinesNFT');
+const walletName = config.cardano.walletName;
+createWallet(walletName);

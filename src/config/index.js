@@ -16,5 +16,6 @@ module.exports = {
   },
   cardano: {
     network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
+    walletName: 'WalletLandMinesNFT',
   },
 };
