@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.get('/health', checkHealth);
 
-router.get('/node-info', getNodeInfo);
+router.get('/node/info', getNodeInfo);
 
 router.get('/wallet/balance', walletBalance);
 router.get('/wallet/address', walletAddress);
