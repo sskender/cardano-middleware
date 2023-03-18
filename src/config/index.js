@@ -12,7 +12,7 @@ module.exports = {
   profile: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   logger: {
-    logLevel: process.env.LOG_LEVEL || 'info',
+    logLevel: process.env.LOG_LEVEL || 'debug',
   },
   cardano: {
     network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
