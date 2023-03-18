@@ -1,10 +1,11 @@
 const httpStatus = require('http-status');
-const wallet = require('../utils/wallet');
+const { walletPrimary, walletSecondary } = require('../utils/wallets');
 
 function walletAddress(req, res, next) {
   try {
     const resData = {
-      paymentAddress: wallet.paymentAddr,
+      paymentAddress1: walletPrimary.paymentAddr,
+      paymentAddress2: walletSecondary.paymentAddr,
     };
 
     return res.status(httpStatus.OK).json({

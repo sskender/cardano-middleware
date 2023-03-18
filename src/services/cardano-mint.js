@@ -1,10 +1,19 @@
 const cardano = require('../utils/cardano');
-const wallet = require('../utils/wallet');
+const { walletPrimary, walletSecondary } = require('../utils/wallets');
 
 function createMintScript() {
   return {
-    keyHash: cardano.addressKeyHash(wallet.name),
-    type: 'sig',
+    type: 'all',
+    scripts: [
+      {
+        keyHash: cardano.addressKeyHash(walletPrimary.name),
+        type: 'sig',
+      },
+      {
+        keyHash: cardano.addressKeyHash(walletSecondary.name),
+        type: 'sig',
+      },
+    ],
   };
 }
 
@@ -34,11 +43,11 @@ function craftMetadata(assetName, policyId, additionalMetadata) {
 
 function buildTransaction(assetId, mintScript, metadata) {
   const tx = {
-    txIn: wallet.balance().utxo,
+    txIn: walletPrimary.balance().utxo,
     txOut: [
       {
-        address: wallet.paymentAddr,
-        value: { ...wallet.balance().value, [assetId]: 1 },
+        address: walletPrimary.paymentAddr,
+        value: { ...walletPrimary.balance().value, [assetId]: 1 },
       },
     ],
     mint: [{ action: 'mint', quantity: 1, asset: assetId, script: mintScript }],
@@ -59,7 +68,7 @@ function buildTransaction(assetId, mintScript, metadata) {
 
 function signTransaction(rawTx, mintScript) {
   return cardano.transactionSign({
-    signingKeys: [wallet.payment.skey, wallet.payment.skey], // 2 witness
+    signingKeys: [walletPrimary.payment.skey, walletSecondary.payment.skey],
     scriptFile: mintScript,
     txBody: rawTx,
   });

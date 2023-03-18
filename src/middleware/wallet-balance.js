@@ -1,16 +1,22 @@
 const httpStatus = require('http-status');
 const logger = require('../utils/logger');
-const wallet = require('../utils/wallet');
+const { walletPrimary, walletSecondary } = require('../utils/wallets');
 
 function walletBalance(req, res, next) {
   try {
     logger.debug('Fetching account balance from blockchain...');
 
-    const { value } = wallet.balance();
+    const balanceVal1 = walletPrimary.balance().value;
+    const balanceVal2 = walletSecondary.balance().value;
+
+    const resData = {
+      balance1: balanceVal1,
+      balance2: balanceVal2,
+    };
 
     return res.status(httpStatus.OK).json({
       success: true,
-      data: value,
+      data: resData,
       status: httpStatus.OK,
     });
   } catch (err) {
