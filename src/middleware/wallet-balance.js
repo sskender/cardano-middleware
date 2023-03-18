@@ -6,11 +6,11 @@ function walletBalance(req, res, next) {
   try {
     logger.debug('Fetching account balance from blockchain...');
 
-    const balance = wallet.balance();
+    const { value } = wallet.balance();
 
     return res.status(httpStatus.OK).json({
       success: true,
-      data: balance,
+      data: value,
       status: httpStatus.OK,
     });
   } catch (err) {
