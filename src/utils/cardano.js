@@ -1,8 +1,8 @@
 const CardanocliJs = require('cardanocli-js');
 const config = require('../config');
 
-const cardanocliJs = new CardanocliJs({
+const cardano = new CardanocliJs({
   network: config.cardano.network,
 });
 
-module.exports = cardanocliJs;
+module.exports = cardano;
