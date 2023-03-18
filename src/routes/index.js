@@ -1,7 +1,9 @@
 const express = require('express');
 
 const checkHealth = require('../middleware/check-health');
+
 const getNodeInfo = require('../middleware/node-info');
+
 const walletBalance = require('../middleware/wallet-balance');
 const walletAddress = require('../middleware/wallet-address');
 

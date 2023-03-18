@@ -9,13 +9,13 @@ if (process.env.NODE_ENV) {
 }
 
 module.exports = {
-  profile: process.env.NODE_ENV || 'local',
+  profile: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   logger: {
     logLevel: process.env.LOG_LEVEL || 'info',
   },
   cardano: {
     network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
-    walletName: 'WalletLandMinesNFT',
+    walletName: process.env.WALLET_NAME || 'WalletLandMinesNFT',
   },
 };
