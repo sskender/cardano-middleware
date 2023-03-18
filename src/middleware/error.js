@@ -12,7 +12,7 @@ function errorHandler(err, req, res, next) {
 
   return res.status(err.statusCode).json({
     success: false,
-    data: [],
+    data: null,
     status: err.statusCode,
   });
 }
