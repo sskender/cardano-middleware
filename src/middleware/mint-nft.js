@@ -10,9 +10,13 @@ function mintNFT(req, res, next) {
 
     const txHash = mint(assetName, additionalMetadata);
 
+    const resData = {
+      hash: txHash,
+    };
+
     return res.status(httpStatus.OK).json({
       success: true,
-      data: txHash,
+      data: resData,
       status: httpStatus.OK,
     });
   } catch (err) {
