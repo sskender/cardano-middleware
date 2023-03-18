@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 
 const logger = require('../utils/logger');
 
-function errorHandler(err, req, res, next) {
+function handleError(err, req, res, next) {
   logger.error(err);
   logger.error(err.stack);
 
@@ -17,4 +17,4 @@ function errorHandler(err, req, res, next) {
   });
 }
 
-module.exports = errorHandler;
+module.exports = handleError;
