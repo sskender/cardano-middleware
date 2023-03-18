@@ -1,3 +1,4 @@
+const logger = require('../utils/logger');
 const cardano = require('../utils/cardano');
 const { walletPrimary, walletSecondary } = require('../utils/wallets');
 
@@ -27,18 +28,17 @@ function createAssetId(assetName, policyId) {
 }
 
 function craftMetadata(assetName, policyId, additionalMetadata) {
-  return {
+  const metadata = {
     721: {
       [policyId]: {
-        [assetName]: {
-          name: assetName,
-          description: 'Titisusa',
-          authors: ['Hello', 'World'],
-          // TODO add more key value pairs
-        },
+        [assetName]: additionalMetadata,
       },
     },
   };
+
+  logger.info(metadata);
+
+  return metadata;
 }
 
 function buildTransaction(assetId, mintScript, metadata) {
@@ -55,6 +55,8 @@ function buildTransaction(assetId, mintScript, metadata) {
     witnessCount: 2,
   };
 
+  logger.info(tx);
+
   const rawTx = cardano.transactionBuildRaw(tx);
   const fee = cardano.transactionCalculateMinFee({
     ...tx,
@@ -63,15 +65,19 @@ function buildTransaction(assetId, mintScript, metadata) {
 
   tx.txOut[0].value.lovelace -= fee;
 
+  logger.info(tx);
+
   return cardano.transactionBuildRaw({ ...tx, fee });
 }
 
 function signTransaction(rawTx, mintScript) {
-  return cardano.transactionSign({
+  const signedTx = cardano.transactionSign({
     signingKeys: [walletPrimary.payment.skey, walletSecondary.payment.skey],
     scriptFile: mintScript,
     txBody: rawTx,
   });
+
+  return signedTx;
 }
 
 function mint(assetName, additionalMetadata) {

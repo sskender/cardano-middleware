@@ -1,19 +1,27 @@
+const httpStatus = require('http-status');
 const logger = require('../utils/logger');
 const mint = require('../services/cardano-mint');
 
 function mintToken(req, res, next) {
   try {
-    // TODO read this from req
-    const { cid } = req;
-    const assetName = 'newasset#4';
-    const additionalMetadata = {};
+    logger.debug(req.body);
 
-    logger.debug(`Got cid: ${cid} in mint token middleware`);
+    const metadata = { ...req.body };
+    const assetName = metadata.id;
+    delete metadata.id;
 
-    const txHash = mint(assetName, additionalMetadata);
-    req.txHash = txHash;
+    const txHash = mint(assetName, metadata);
 
-    next();
+    const resData = {
+      transaction_hash: txHash,
+      token_metadata: metadata,
+    };
+
+    return res.status(httpStatus.OK).json({
+      success: true,
+      data: resData,
+      status: httpStatus.OK,
+    });
   } catch (err) {
     return next(err);
   }
