@@ -31,5 +31,5 @@ docker run --rm -p 3000:3000 -it -v $PWD/cardano-data/cardano/ipc/socket:/opt/ca
 Connect to public API:
 
 ```bash
-curl "http://143.42.205.184:3000/api/v1/info" | jq
+curl -X POST "https://ada.sskender.com/api/v1/mint" | jq
 ```
