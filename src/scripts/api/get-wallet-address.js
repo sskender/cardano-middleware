@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const axios = require('axios');
 
 const URL = 'https://ada.sskender.com/api/v1/wallet/address';
