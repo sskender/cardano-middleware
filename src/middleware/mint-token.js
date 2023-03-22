@@ -8,7 +8,7 @@ function mintToken(req, res, next) {
     const assetName = metadata.id;
     delete metadata.id;
 
-    logger.debug(`Minting token with id ${assetName}`);
+    logger.debug(`Minting token with id '${assetName}'`);
     logger.debug(metadata);
 
     const txHash = mint(assetName, metadata);
