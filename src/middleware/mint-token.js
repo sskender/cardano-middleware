@@ -4,11 +4,12 @@ const mint = require('../services/cardano-mint');
 
 function mintToken(req, res, next) {
   try {
-    logger.debug(req.body);
-
     const metadata = { ...req.body };
     const assetName = metadata.id;
     delete metadata.id;
+
+    logger.debug(`Minting token with id ${assetName}`);
+    logger.debug(metadata);
 
     const txHash = mint(assetName, metadata);
 
