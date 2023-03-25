@@ -4,23 +4,23 @@ const axios = require('axios');
 const URL = 'https://ada.sskender.com/api/v1/token/mint';
 
 const payload = {
-  id: 'LandMine#1',
-  name: 'Glorious land mine number 1',
-  description: 'Description of this land mine',
-  authors: ['Pyrotechnician 1', 'Pyrotechnician 2'],
-  latitude: 5000,
-  longitude: 4000,
+  id: 'LandMine#14',
+  name: 'Glorious land mine number 14',
+  description: 'Description of this land mine 14',
+  authors: ['Pyrotechnician 14', 'Pyrotechnician 24'],
+  latitude: 50004,
+  longitude: 40004,
   files: [
     {
-      name: 'File 1',
+      name: 'File 12',
       mediaType: 'image/gif',
-      src: 'cid111',
+      src: 'cid111333',
       sha256: 'hashverification1',
     },
     {
-      name: 'File 2',
+      name: 'File 21',
       mediaType: 'image/gif',
-      src: 'cid222',
+      src: 'cid222444',
       sha256: 'hashverification2',
     },
   ],
