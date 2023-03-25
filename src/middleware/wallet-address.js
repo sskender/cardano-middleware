@@ -6,7 +6,7 @@ function walletAddress(req, res, next) {
   try {
     const resData = {};
 
-    logger.debug('Fetching wallet addresses...');
+    logger.info('Fetching wallet addresses...');
 
     for (const wallet of wallets) {
       resData[wallet.name] = wallet.paymentAddr;

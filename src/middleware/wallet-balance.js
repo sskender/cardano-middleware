@@ -4,7 +4,7 @@ const wallets = require('../utils/wallets');
 
 function walletBalance(req, res, next) {
   try {
-    logger.debug('Fetching account balance from blockchain...');
+    logger.info('Fetching account balance from blockchain...');
 
     const resData = {};
 
