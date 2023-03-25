@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const axios = require('axios');
 
-const URL = 'https://ada.sskender.com/api/v1/mint';
+const URL = 'https://ada.sskender.com/api/v1/token/mint';
 
 const payload = {
   id: 'LandMine#1',
