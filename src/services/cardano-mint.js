@@ -1,33 +1,47 @@
 const logger = require('../utils/logger');
 const cardano = require('../utils/cardano');
-const { walletPrimary, walletSecondary } = require('../utils/wallets');
+const wallets = require('../utils/wallets');
+
+const primaryWallet = wallets[0];
 
 function createMintScript() {
-  return {
+  logger.info('Creating mint script...');
+
+  const mintScript = {
     type: 'all',
-    scripts: [
-      {
-        keyHash: cardano.addressKeyHash(walletPrimary.name),
-        type: 'sig',
-      },
-      {
-        keyHash: cardano.addressKeyHash(walletSecondary.name),
-        type: 'sig',
-      },
-    ],
+    scripts: [],
   };
+
+  for (const wallet of wallets) {
+    mintScript.scripts.push({
+      keyHash: cardano.addressKeyHash(wallet.name),
+      type: 'sig',
+    });
+  }
+
+  logger.info(mintScript);
+
+  return mintScript;
 }
 
 function createAssetId(assetName, policyId) {
+  logger.info('Creating asset id from name and policy...');
+
   const assetNameHex = assetName
     .split('')
     .map((c) => c.charCodeAt(0).toString(16).padStart(2, '0'))
     .join('');
+
   const assetId = `${policyId}.${assetNameHex}`;
+
+  logger.info(assetId);
+
   return assetId;
 }
 
 function craftMetadata(assetName, policyId, additionalMetadata) {
+  logger.info('Crafting metadata...');
+
   const metadata = {
     721: {
       [policyId]: {
@@ -42,12 +56,14 @@ function craftMetadata(assetName, policyId, additionalMetadata) {
 }
 
 function buildTransaction(assetId, mintScript, metadata) {
+  logger.info('Building transaction...');
+
   const tx = {
-    txIn: walletPrimary.balance().utxo,
+    txIn: primaryWallet.balance().utxo,
     txOut: [
       {
-        address: walletPrimary.paymentAddr,
-        value: { ...walletPrimary.balance().value, [assetId]: 1 },
+        address: primaryWallet.paymentAddr,
+        value: { ...primaryWallet.balance().value, [assetId]: 1 },
       },
     ],
     mint: [{ action: 'mint', quantity: 1, asset: assetId, script: mintScript }],
@@ -71,11 +87,20 @@ function buildTransaction(assetId, mintScript, metadata) {
 }
 
 function signTransaction(rawTx, mintScript) {
+  logger.info('Signing transaction...');
+
+  const signingKeys = [];
+  for (const wallet of wallets) {
+    signingKeys.push(wallet.payment.skey);
+  }
+
   const signedTx = cardano.transactionSign({
-    signingKeys: [walletPrimary.payment.skey, walletSecondary.payment.skey],
+    signingKeys: signingKeys,
     scriptFile: mintScript,
     txBody: rawTx,
   });
+
+  logger.info(signedTx);
 
   return signedTx;
 }
