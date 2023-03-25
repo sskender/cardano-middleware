@@ -16,7 +16,7 @@ module.exports = {
   },
   cardano: {
     network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
-    walletNamePrimary: process.env.WALLET_NAME_PRIMARY || 'WalletLandMinesNFT',
-    walletNameSecondary: process.env.WALLET_NAME_SECONDARY || 'WitnessWallet',
+    primaryWalletName: process.env.PRIMARY_WALLET_NAME || 'WalletLandMinesNFT',
+    secondaryWalletNames: ['WitnessWallet'],
   },
 };
