@@ -19,7 +19,4 @@ module.exports = {
     walletNamePrimary: process.env.WALLET_NAME_PRIMARY || 'WalletLandMinesNFT',
     walletNameSecondary: process.env.WALLET_NAME_SECONDARY || 'WitnessWallet',
   },
-  files: {
-    uploadSizeLimit: 256 * 1024 * 1024,
-  },
 };
