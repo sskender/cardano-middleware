@@ -27,11 +27,7 @@ function createMintScript() {
 function createAssetId(assetName, policyId) {
   logger.info('Creating asset id from name and policy...');
 
-  const assetNameHex = assetName
-    .split('')
-    .map((c) => c.charCodeAt(0).toString(16).padStart(2, '0'))
-    .join('');
-
+  const assetNameHex = Buffer.from(assetName).toString('hex');
   const assetId = `${policyId}.${assetNameHex}`;
 
   logger.info(assetId);
