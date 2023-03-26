@@ -1,5 +1,7 @@
 # Local development guide
 
+TODO update - delete?
+
 ## On local machine
 
 Connect to remote Docker:
