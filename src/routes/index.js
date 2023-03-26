@@ -6,6 +6,7 @@ const getNodeInfo = require('../middleware/node-info');
 
 const walletBalance = require('../middleware/wallet-balance');
 const walletAddress = require('../middleware/wallet-address');
+const walletTokens = require('../middleware/wallet-tokens');
 
 const mintToken = require('../middleware/mint-token');
 
@@ -17,6 +18,7 @@ router.get('/node/info', getNodeInfo);
 
 router.get('/wallet/balance', walletBalance);
 router.get('/wallet/address', walletAddress);
+router.get('/wallet/tokens', walletTokens);
 
 router.post('/token/mint', mintToken);
 
