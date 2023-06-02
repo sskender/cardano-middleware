@@ -1,5 +1,5 @@
 {
-  "name": "cardano-nft-land-mines",
+  "name": "cardano-middleware",
   "version": "1.0.0",
   "description": "Service for interaction with land mines NFTs on Cardano blockchain",
   "main": "src/index.js",
