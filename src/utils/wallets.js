@@ -1,18 +1,20 @@
 const config = require('../config');
 const cardano = require('./cardano');
 const logger = require('./logger');
-
-const primaryWallet = cardano.wallet(config.cardano.primaryWalletName);
-
-const secondaryWallets = config.cardano.secondaryWalletNames.map(
-  (walletName) => {
-    return cardano.wallet(walletName);
-  }
-);
-
-const wallets = [primaryWallet, ...secondaryWallets];
+const createNewWallet = require('../services/cardano-wallet');
 
 logger.info('Loading wallets...');
+
+const walletNames = config.cardano.wallets;
+
+const wallets = walletNames.map((walletName) => {
+  try {
+    return cardano.wallet(walletName);
+  } catch (err) {
+    return createNewWallet(walletName);
+  }
+});
+
 logger.info(wallets);
 
 module.exports = wallets;

@@ -15,8 +15,8 @@ module.exports = {
     logLevel: process.env.LOG_LEVEL || 'debug',
   },
   cardano: {
+    socketPath: process.env.CARDANO_NODE_SOCKET_PATH,
     network: process.env.CARDANO_NETWORK || 'testnet-magic 1',
-    primaryWalletName: process.env.PRIMARY_WALLET_NAME || 'WalletLandMinesNFT',
-    secondaryWalletNames: ['WitnessWallet'],
+    wallets: ['Wallet1', 'Wallet2', 'Wallet3'],
   },
 };
