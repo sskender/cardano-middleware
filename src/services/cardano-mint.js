@@ -64,7 +64,7 @@ function buildTransaction(assetId, mintScript, metadata) {
     ],
     mint: [{ action: 'mint', quantity: 1, asset: assetId, script: mintScript }],
     metadata,
-    witnessCount: 2,
+    witnessCount: wallets.length,
   };
 
   logger.info(tx);
