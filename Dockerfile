@@ -34,6 +34,8 @@ RUN npm ci --omit=dev
 
 COPY . .
 
+VOLUME [ "/opt/cardano-middleware/priv" ]
+
 EXPOSE 3000
 
 CMD ["npm", "start"]
