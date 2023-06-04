@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 
 const logger = require('../utils/logger');
 
+// eslint-disable-next-line no-unused-vars
 function handleError(err, req, res, next) {
   logger.error(err);
   logger.error(err.stack);
