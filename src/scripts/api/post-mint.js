@@ -9,8 +9,8 @@ const payload = {
   description:
     'The casing is a light green color with two detonator wells and three crude sight lines on the top and   an embossed grid pattern on the front of some early mines. Two detachable metal legs fit in slots on the bottom to   secure the mine when it is ground mounted.',
   authors: ['Pyrotechnician 11', 'Pyrotechnician 24'],
-  latitude: 45.8001454,
-  longitude: 15.970733,
+  latitude: '45.8001454',
+  longitude: '15.970733',
   files: [
     {
       name: 'File#1024',
