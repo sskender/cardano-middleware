@@ -1,7 +1,7 @@
 {
   "name": "cardano-middleware",
   "version": "1.0.0",
-  "description": "Service for interaction with land mines NFTs on Cardano blockchain",
+  "description": "Middleware service for interaction with NFTs on Cardano blockchain",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
